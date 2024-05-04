@@ -1,0 +1,65 @@
+@import url('./reset.css');
+@import "flatpickr/dist/flatpickr.min.css";
+h1 {
+    display: block;
+    text-align: center;
+    margin: 20px auto 40px;
+    font-size: 30px;
+    font-weight: 400;
+}
+body {
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    color: #2E2F42;
+    padding: 0 50px;
+}
+.timer {
+    display: flex;
+    gap: 24px;
+    width: 350px;
+}
+.timer .field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+.field .value {
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;    
+}
+.field .label {
+    font-size: 16px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+#datetime-picker {
+    width: 275;
+    height: 36px;
+    margin-right: 5px;
+    padding: 0;
+    border: 1px solid #808080;
+    border-radius: 8px;
+    padding-left: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #2E2F42;
+}
+button {
+    height: 40px;
+    width: 75px;
+    border: none;
+    border-radius: 8px;
+    color: #FFFFFF;
+    background-color: #4E75FF;
+    font-size: 16px;
+    line-height: 1.5;
+}
+button:hover {
+    background-color: #6C8CFF;
+}
+button:disabled {
+    background-color: #CFCFCF;
+    color: #989898;
+}
