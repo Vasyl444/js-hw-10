@@ -76,3 +76,7 @@ button:disabled {
     background-color: #CFCFCF;
     color: #989898;
 }
+svg {
+    fill: #fff;
+    stroke: #fff;
+}
