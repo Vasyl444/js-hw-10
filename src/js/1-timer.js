@@ -37,7 +37,7 @@ let closeButton = document.createElement('button');
   closeButton.style.padding = '0';
   closeButton.style.width = 'auto';
   closeButton.style.height = 'auto';
-  closeButton.insertAdjacentHTML("beforeend", '<svg width=12 height=12><use href="../img/symbol-defs.svg#icon-Vector-1"></use></svg>');
+  closeButton.insertAdjacentHTML("beforeend", '<svg width=12 height=12><use href="../img/symbol-defs.svg#icon-Vector"></use></svg>');
   closeButton.onclick = function() {       
   closeButton.remove();
   alertBox.remove();
