@@ -30,7 +30,7 @@ let alertBox = document.createElement('div');
   alertBox.style.width = '300px';
   
 let image = document.createElement('img');
-image.src = '../img/Vector (1).svg';
+image.src = 'http://www.w3.org/2000/svg';
 
 let closeButton = document.createElement('button');
   closeButton.style.border = 'none';
