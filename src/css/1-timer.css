@@ -17,6 +17,7 @@ body {
     display: flex;
     gap: 24px;
     width: 350px;
+    padding: 0;
 }
 .timer .field {
     display: flex;
@@ -40,13 +41,24 @@ body {
     margin-right: 5px;
     padding: 0;
     border: 1px solid #808080;
-    border-radius: 8px;
+    border-radius: 4px;
     padding-left: 10px;
     font-size: 16px;
     line-height: 1.5;
     color: #2E2F42;
 }
-button {
+#datetime-picker:hover {
+    border-color: #2E2F42;
+}
+#datetime-picker:active {
+    color: #000000;
+    border-color: #4E75FF;
+}
+#datetime-picker:disabled {
+    border-color: #808080;
+    color: #808080;
+}
+ button {
     height: 40px;
     width: 75px;
     border: none;
@@ -55,6 +67,7 @@ button {
     background-color: #4E75FF;
     font-size: 16px;
     line-height: 1.5;
+    position: relative;
 }
 button:hover {
     background-color: #6C8CFF;
