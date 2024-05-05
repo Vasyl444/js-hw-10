@@ -1,11 +1,13 @@
 import flatpickr from "flatpickr";
 const startButton = document.querySelector("button[data-start]");
 const myInput = document.querySelector("#datetime-picker");
-const days = document.querySelector("span[data-days");
-console.log("🚀 ~ days:", days);
-const hours = document.querySelector("span[data-hours]");
-console.log("🚀 ~ hours:", hours)
-const section = document.querySelector("section");
+const daysInTimer = document.querySelector("span[data-days");
+const hoursInTimer = document.querySelector("span[data-hours]");
+const minutesInTimer  = document.querySelector("span[data-minutes]");
+const secondsInTimer  = document.querySelector("span[data-seconds]");
+const body = document.querySelector("body");
+
+startButton.setAttribute("disabled", "");
 
 let userSelectedDate;
 
@@ -24,30 +26,30 @@ let alertBox = document.createElement('div');
   alertBox.style.display = 'flex';
   alertBox.style.justifyContent = 'space-evenly';
   alertBox.style.alignItems = 'center';
-alertBox.style.height = '64px';
-alertBox.style.width = '300px';
+  alertBox.style.height = '64px';
+  alertBox.style.width = '300px';
   
 let image = document.createElement('img');
 image.src = '../img/Vector (1).svg';
 
-  let closeButton = document.createElement('button');
-closeButton.style.border = 'none';
-    closeButton.style.backgroundColor = '#EF4040';
-closeButton.style.marginLeft = '10px';
-closeButton.style.display = 'flex';
-closeButton.style.padding = '0';
-closeButton.style.width = 'auto';
-closeButton.style.height = 'auto';
-    closeButton.prepend(image);
-    closeButton.onclick = function() {       
-        closeButton.remove();
-        alertBox.remove();
-    };
+let closeButton = document.createElement('button');
+  closeButton.style.border = 'none';
+  closeButton.style.backgroundColor = '#EF4040';
+  closeButton.style.marginLeft = '10px';
+  closeButton.style.display = 'flex';
+  closeButton.style.padding = '0';
+  closeButton.style.width = 'auto';
+  closeButton.style.height = 'auto';
+  closeButton.prepend(image);
+  closeButton.onclick = function() {       
+  closeButton.remove();
+  alertBox.remove();
+};
+    
 function customAlert() {  
   alertBox.appendChild(closeButton);
     startButton.appendChild(alertBox);
 }
-
 
 const fp = flatpickr(myInput, {
   enableTime: true,
@@ -59,31 +61,46 @@ const fp = flatpickr(myInput, {
       console.log(selectedDates[0]);
       if (selectedDates[0] < new Date()) {
           customAlert();
-      } else {
+      } else {         
           userSelectedDate = selectedDates[0].getTime();
-          return userSelectedDate;
-          };
-    },
-});
-myInput.addEventListener('click', () => {
-    closeButton.remove();
-    alertBox.remove();
+          startButton.removeAttribute("disabled");
+          closeButton.remove();
+          alertBox.remove();
+    };
+  },
 });
 
-startButton.setAttribute("disabled", "");
-section.addEventListener("click", (event) => {
-    if (event.target === myInput) {
-        startButton.removeAttribute("disabled");
-    } else if (event.target !== myInput) { startButton.setAttribute("disabled", ""); }
-});
+function convertMs(ms) {
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  const days = Math.floor(ms / day);
+  const hours = Math.floor((ms % day) / hour);
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+
+  return { days, hours, minutes, seconds };
+}
+
+function addLeadingZero(value) {
+    return `${value}`.padStart(2, '0');
+}
 
 startButton.addEventListener("click", () => {
+    startButton.setAttribute("disabled", "");
+    myInput.setAttribute("disabled", "");
   const  interval = setInterval(() => {
-       let residue = Math.floor((userSelectedDate - new Date()) / 1000); 
-        console.log(residue);
-        residue -= 1;
-        if (residue < 0) {
-            clearInterval(interval);
+      let residue = userSelectedDate - new Date();
+      const convertation = convertMs(residue);
+        secondsInTimer.textContent = addLeadingZero(convertation.seconds);
+        minutesInTimer.textContent = addLeadingZero(convertation.minutes);
+      hoursInTimer.textContent = addLeadingZero(convertation.hours);
+      daysInTimer.textContent = addLeadingZero(convertation.days);
+        if (residue < 1000) {
+          clearInterval(interval);
+          myInput.removeAttribute("disabled");
             return;
         }
     }, 1000);

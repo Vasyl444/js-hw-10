@@ -12,6 +12,7 @@ body {
     font-weight: 400;
     color: #2E2F42;
     padding: 0 50px;
+    height: 100vh;
 }
 .timer {
     display: flex;
@@ -36,10 +37,9 @@ body {
     text-transform: uppercase;
 }
 #datetime-picker {
-    width: 275;
+    width: 230px;
     height: 36px;
     margin-right: 5px;
-    padding: 0;
     border: 1px solid #808080;
     border-radius: 4px;
     padding-left: 10px;
