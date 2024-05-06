@@ -1,1 +1,93 @@
 @import url('./reset.css');
+@import "izitoast/dist/css/iziToast.min.css";
+body {
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    color: #2E2F42;
+    padding: 0 50px;
+    height: 100vh;
+}
+
+h1 {
+    display: block;
+    text-align: center;
+    margin: 20px auto 40px;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.form > button {
+    color: #fff;
+    background-color: #4E75FF;
+    height: 40px;
+    width: 360px;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+}
+
+.form > button:hover {
+    background-color: #6C8CFF;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 360px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #2E2F42;
+}
+.form>label {
+    display: flex;
+    flex-direction: column;
+}
+.form>label>input {
+    border: 1px solid #808080;
+    border-radius: 4px;
+    height: 40px;
+    padding-left: 15px;
+    outline: none;
+}
+
+.form>label>input:hover {
+    border-color: #000000;
+}
+.form>label>input:focus{
+    border-color: #4E75FF;
+    outline: none;
+}
+
+fieldset{
+    margin: 0;
+    padding: 20px 0 10px 0;
+    width: 360px;
+    max-height: 78px;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+fieldset:hover {
+    border-color: #000000;
+}
+
+legend {
+    margin-left: 30px;
+}
+legend>label {
+    display: block;
+}
+input[type="radio"]:hover {
+    stroke: #4E75FF;
+}
