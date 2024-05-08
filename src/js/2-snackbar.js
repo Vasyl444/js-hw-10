@@ -4,6 +4,7 @@ const time = document.querySelector('input[type="number"]');
 const fulfilled = document.querySelector('input[value="fulfilled"]');
 const rejected = document.querySelector('input[value="rejected"]');
 const form = document.querySelector('.form');
+const submit = document.querySelector('button[type="submit"');
 let functionTime = 0;
 let result = '';
 
@@ -17,7 +18,7 @@ fulfilled.addEventListener('click', () => {
 rejected.addEventListener('click', () => {
     result = rejected.value;
 }); 
-form.addEventListener('submit', (event) => {
+submit.addEventListener('submit', (event) => {
     event.preventDefault();
     //time = delay.value;
     const promise = new Promise((resolve, reject) => {
