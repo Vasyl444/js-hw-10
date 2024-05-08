@@ -1,99 +1,122 @@
 import iziToast from "izitoast";
 
-const delay = document.querySelector('input[type="number"]');
+const time = document.querySelector('input[type="number"]');
 const fulfilled = document.querySelector('input[value="fulfilled"]');
 const rejected = document.querySelector('input[value="rejected"]');
-const submit = document.querySelector('button[type="submit"]');
 const form = document.querySelector('.form');
-let time = 0;
-let checked = "";
-let notChecked = "";
+let functionTime = 0;
+let result = '';
 
-delay.addEventListener("blur", () => {
-    time = delay.value;
+time.addEventListener('blur', () => {
+    functionTime = time.value;
 })
-fulfilled.addEventListener("click", () => {
-    checked = fulfilled.value;
+fulfilled.addEventListener('click', () => {
+    result = fulfilled.value;
 });
-rejected.addEventListener("click", () => {
-    notChecked = rejected.value;
-});
-     
-submit.addEventListener("click", (event) => {
+
+rejected.addEventListener('click', () => {
+    result = rejected.value;
+}); 
+form.addEventListener('submit', (event) => {
     event.preventDefault();
+    //time = delay.value;
     const promise = new Promise((resolve, reject) => {
-        if (checked) {
+        if (result === 'fulfilled') {
+            const delay = functionTime;
             setTimeout(() => {
-                resolve(iziToast.show({
-                    id: null,
-                    class: '',
-                    title: 'Ok',
-                    titleColor: '#fff',
-                    titleSize: '',
-                    titleLineHeight: '',
-                    message: `✅ Fulfilled promise in ${time}ms`,
-                    messageColor: '',
-                    messageSize: '',
-                    messageLineHeight: '',
-                    backgroundColor: '',
-                    theme: 'light', // dark
-                    color: '', // blue, red, green, yellow
-                    icon: '',
-                    iconText: '',
-                    iconColor: '',
-                    iconUrl: null,
-                    image: '',
-                    imageWidth: 50,
-                    maxWidth: null,
-                    zindex: 100,
-                    layout: 1,
-                    balloon: false,
-                    close: true,
-                    closeOnEscape: false,
-                    closeOnClick: false,
-                    displayMode: 0, // once, replace
-                    position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
-                    target: '',
-                    targetFirst: true,
-                    timeout: 5000,
-                    rtl: false,
-                    animateInside: true,
-                    drag: true,
-                    pauseOnHover: true,
-                    resetOnHover: false,
-                    progressBar: true,
-                    progressBarColor: '',
-                    progressBarEasing: 'linear',
-                    overlay: false,
-                    overlayClose: false,
-                    overlayColor: 'rgba(0, 0, 0, 0.6)',
-                    transitionIn: 'fadeInUp',
-                    transitionOut: 'fadeOut',
-                    transitionInMobile: 'fadeInUp',
-                    transitionOutMobile: 'fadeOutDown',
-                    buttons: {},
-                    inputs: {},
-                    onOpening: function () { },
-                    onOpened: function () { },
-                    onClosing: function () { },
-                    onClosed: function () { }
-                }))
-            }, time);
+                resolve(
+                    iziToast.show({
+                        id: null,
+                        class: 'izi-toast',
+                        title: 'Ok',
+                        titleColor: '#fff',
+                        message: `✅ Fulfilled promise in ${delay}ms`,
+                        messageColor: '#fff',
+                        backgroundColor: '#59A10D',
+                        theme: 'light',
+                        color: '#fff', 
+                        zindex: 100,
+                        layout: 1,
+                        balloon: false,
+                        close: false,
+                        closeOnEscape: false,
+                        closeOnClick: false,
+                        displayMode: 0, // once, replace
+                        position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
+                        target: '',
+                        targetFirst: true,
+                        timeout: 5000,
+                        rtl: false,
+                        animateInside: true,
+                        drag: true,
+                        pauseOnHover: true,
+                        resetOnHover: false,
+                        progressBar: true,
+                        progressBarColor: '',
+                        progressBarEasing: 'linear',
+                        overlay: false,
+                        overlayClose: false,
+                        overlayColor: 'rgba(0, 0, 0, 0.6)',
+                        transitionIn: 'fadeInUp',
+                        transitionOut: 'fadeOut',
+                        transitionInMobile: 'fadeInUp',
+                        transitionOutMobile: 'fadeOutDown',
+                    })
+                ),
+                    result = ""
+            }, functionTime);
+            form.reset();
         } else {
-            setTimeout(() => {
-                reject(iziToast.error({
-                    title: 'Error',
-                    message: 'Illegal operation',
-                }))
-            }, time);
-        };
-    });
-    promise
-        .then(value => { return value })
-        .catch(console.error())
+            const delay = functionTime;
+            reject(
+                setTimeout(() => {
+                                      iziToast.show({
+                        id: null,
+                        class: 'izi-toast',
+                        title: '',
+                        titleColor: '#fff',
+                        message: `❌ Rejected promise in ${delay}ms`,
+                        messageColor: '#fff',
+                        backgroundColor: '#B51B1B',
+                        theme: 'light',
+                        color: '#fff', 
+                        zindex: 100,
+                        layout: 1,
+                        balloon: false,
+                        close: false,
+                        closeOnEscape: false,
+                        closeOnClick: false,
+                        displayMode: 0, // once, replace
+                        position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
+                        target: '',
+                        targetFirst: true,
+                        timeout: 5000,
+                        rtl: false,
+                        animateInside: true,
+                        drag: true,
+                        pauseOnHover: true,
+                        resetOnHover: false,
+                        progressBar: true,
+                        progressBarColor: '',
+                        progressBarEasing: 'linear',
+                        overlay: false,
+                        overlayClose: false,
+                        overlayColor: 'rgba(0, 0, 0, 0.6)',
+                        transitionIn: 'fadeInUp',
+                        transitionOut: 'fadeOut',
+                        transitionInMobile: 'fadeInUp',
+                        transitionOutMobile: 'fadeOutDown',
+                    }),
+                        result = ''
+                }, functionTime
+                )
+            );
+            form.reset();
+        }
+    })
+  
+        promise
+            .then(value => { return value })
+            .catch(error => {return error})
         .finally()
-});    
-    
-        
-    
-     
+});

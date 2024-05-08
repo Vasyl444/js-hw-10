@@ -88,6 +88,6 @@ legend {
 legend>label {
     display: block;
 }
-input[type="radio"]:hover {
-    stroke: #4E75FF;
+.izi-toast {
+    border-radius: 4px;
 }
