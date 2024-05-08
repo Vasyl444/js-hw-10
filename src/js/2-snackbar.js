@@ -19,7 +19,7 @@ rejected.addEventListener('click', () => {
     result = rejected.value;
 }); 
 submit.addEventListener('submit', (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     //time = delay.value;
     const promise = new Promise((resolve, reject) => {
         if (result === 'fulfilled') {
