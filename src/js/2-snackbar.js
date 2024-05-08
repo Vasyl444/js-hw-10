@@ -18,8 +18,8 @@ fulfilled.addEventListener('click', () => {
 rejected.addEventListener('click', () => {
     result = rejected.value;
 }); 
-submit.addEventListener('submit', (event) => {
-    //event.preventDefault();
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
     //time = delay.value;
     const promise = new Promise((resolve, reject) => {
         if (result === 'fulfilled') {
@@ -43,7 +43,7 @@ submit.addEventListener('submit', (event) => {
                         closeOnEscape: false,
                         closeOnClick: false,
                         displayMode: 0, // once, replace
-                        position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
+                        position: 'center', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
                         target: '',
                         targetFirst: true,
                         timeout: 5000,
@@ -88,7 +88,7 @@ submit.addEventListener('submit', (event) => {
                         closeOnEscape: false,
                         closeOnClick: false,
                         displayMode: 0, // once, replace
-                        position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
+                        position: 'center', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
                         target: '',
                         targetFirst: true,
                         timeout: 5000,
